@@ -1,0 +1,71 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  
+  "Description" : "AWS cloud formation template for enabling encryption/decryption of KMS keys by account's - AccountA, AccountB AccountC. The keys are created and kept in AccountD ",
+  
+  "Parameters" : {      
+      "KeyOwner": {
+      "Description" : "Account alias of key owner",
+      "Type": "String",
+      "ConstraintDescription" : "must be the of an existing account",
+	   "Default": "AccountsD"
+       },
+      "KeyClient": {
+      "Description" : "Account alias of key consumer",
+      "Type": "String",
+      "ConstraintDescription" : "must be the of an existing account",
+	  "AllowedValues":["AccountsA", "AccountsB", "AccountsC"],
+	  "Default": "AccountsA"
+      }
+		
+  },
+  
+  "Mappings":{
+    "AccountInfo": {
+	"AccountsD":{ "AccNum" : "100000000000", "KeyAlias" : "alias/AccountD" },
+	"AccountsA":{ "AccNum" : "211111111111", "KeyAlias" : "alias/AccountA" },
+	"AccountsB":{ "AccNum" : "322222222222", "KeyAlias" : "alias/AccountB" },
+	"AccountsC":{ "AccNum" : "433333333333", "KeyAlias" : "alias/AccountC" }
+	}  
+  },
+    
+  "Resources" : {        
+   "AccDkey": {
+   "Type" : "AWS::KMS::Key",
+   "Properties" : {
+     "Description" : "Key for remote account",
+     "KeyPolicy" : {
+
+
+  "Version": "2012-10-17",
+  "Id": "key-consolepolicy-2",
+  "Statement": [
+    {
+      "Sid": "Enable IAM User Permissions",
+      "Effect": "Allow",
+	  "Principal": {"AWS":[{"Fn::Join":["", ["arn:aws:iam::", {"Fn::FindInMap" : ["AccountInfo", {"Ref":"KeyClient"}, "AccNum" ]}, ":root"]] },
+		                   {"Fn::Join":["", ["arn:aws:iam::", {"Fn::FindInMap" : ["AccountInfo", {"Ref":"KeyClient"}, "AccNum" ]}, ":user/admin"]] }]},
+      "Action": "kms:*",
+      "Resource": "*"
+    }
+  ]	
+	   }
+	 }
+	},
+	
+  	"Alias" : {
+    "Type" : "AWS::KMS::Alias",
+    "Properties" : {
+    "AliasName" : {"Fn::FindInMap" : ["AccountInfo", {"Ref":"KeyOwner"}, "KeyAlias" ]}, 
+    "TargetKeyId" :  {"Ref": "AccDkey"} 
+    }
+   }	
+ },
+  
+  "Outputs" : {
+    "AccountKeys" : {
+      "Description" : "Arn for keys",
+      "Value" : { "Fn::Join" : [" ", ["Key", {"Ref":"KeyOwner"} , { "Fn::GetAtt" : [ "AccDkey", "Arn"]}]] }
+    }
+  }
+}
