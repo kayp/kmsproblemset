@@ -10,15 +10,15 @@ Stack sets were used to grant users permission to used in various accounts appro
 The following code samples are available in this repo:
 
 
-(i) The master template that calls all the stacks
+(i) The [master template](https://github.com/kayp/kmsproblemset/blob/master/keyCreationNestedTemplate.json) that calls all the stacks
 
 
-(ii) The nested template that takes a parameter and creates keys for the user.
+(ii) The [nested template](https://github.com/kayp/kmsproblemset/blob/master/keyCreationNestedTemplate.json) that takes a parameter and creates keys for the user.
 
 
-(iii) One template only for host.
+(iii) One [template only for](https://github.com/kayp/kmsproblemset/blob/master/hostOnlyTemplate.json) host. This could have been merged with the other nested template to maintain only one template. However separation between host only and client only templates is also useful.
 
-(iv) One template for granting appropriate permissions to users (not admin or root) i other accounts. This process assues the appropriate trust relationship
+(iv) A [template for granting appropriate permissions](https://github.com/kayp/kmsproblemset/blob/master/cfClientKey.json) to users (not admin or root) in other accounts  using stacksets. This process assues the appropriate trust relationship
 between admin key accounand client AWS accounts was created.
 
 <b>A use case of KMS is presented below</b>
