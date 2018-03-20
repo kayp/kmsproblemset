@@ -10,7 +10,7 @@ Stack sets were used to grant users permission to used in various accounts appro
 The following code samples are available in this repo:
 
 
-(i) The [master template](https://github.com/kayp/kmsproblemset/blob/master/keyCreationNestedTemplate.json) that calls all the stacks
+(i) The [master template](https://github.com/kayp/kmsproblemset/blob/master/masterCFNtemplate.json) that initiates stacks to create keys for multiple acounts.
 
 
 (ii) The [nested template](https://github.com/kayp/kmsproblemset/blob/master/keyCreationNestedTemplate.json) that takes a parameter and creates keys for the user.
