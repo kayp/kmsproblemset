@@ -6,7 +6,7 @@
       "myStackWithParams1" : {
          "Type" : "AWS::CloudFormation::Stack",
          "Properties" : {
-            "TemplateURL" : "https://s3.--link to template keyCreationNestedTemplate.json",
+            "TemplateURL" : "https://github.com/kayp/kmsproblemset/blob/master/keyCreationNestedTemplate.json",
             "Parameters" : {
                "KeyClient" : "AccountsA"
             }
@@ -15,7 +15,7 @@
       "myStackWithParams2" : {
          "Type" : "AWS::CloudFormation::Stack",
          "Properties" : {
-            "TemplateURL" : "https://s3.--link to template keyCreationNestedTemplate.json",
+            "TemplateURL" : "https://github.com/kayp/kmsproblemset/blob/master/keyCreationNestedTemplate.json",
             "Parameters" : {
                "KeyClient" : "AccountsB"
             }
@@ -24,7 +24,7 @@
       "myStackWithParams3" : {
          "Type" : "AWS::CloudFormation::Stack",
          "Properties" : {
-            "TemplateURL" : "https://s3.--link to template keyCreationNestedTemplate.json",
+            "TemplateURL" : "https://github.com/kayp/kmsproblemset/blob/master/keyCreationNestedTemplate.json",
             "Parameters" : {
                "KeyClient" : "AccountsC"
             }
@@ -33,7 +33,7 @@
       "myStackWithParams4" : {
          "Type" : "AWS::CloudFormation::Stack",
          "Properties" : {
-            "TemplateURL" : "https://s3.--link to template hostOnlyTemplate.json"
+            "TemplateURL" : "https://github.com/kayp/kmsproblemset/blob/master/hostOnlyTemplate.json"
          }
       },
 	  
