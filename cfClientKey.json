@@ -1,26 +1,26 @@
 {
   "AWSTemplateFormatVersion" : "2010-09-09",  
-  "Description" : "Key Permission StackSet Deployment",
+  "Description" : "Key Permission StackSet Deployment from AccountD into accounts AcoountB, AccountC and AccountD",
   "Resources" : {
-	"ClientKeypolicy" : {
-	  "Type" : "AWS::IAM::Policy",
-	  "Properties" : {
-        "PolicyName" : "AccountDKeyAceess",
-        "PolicyDocument" : {
-          "Version": "2012-10-17",
-          "Statement" : [ {
-            "Effect" : "Allow",
-            "Action" : [
+    "ClientKeypolicy" : {
+        "Type" : "AWS::IAM::Policy",
+        "Properties" : {
+          "PolicyName" : "AccountDKeyAceess",
+          "PolicyDocument" : {
+            "Version": "2012-10-17",
+                "Statement" : [ {
+                 "Effect" : "Allow",
+                  "Action" : [
 			   "kms:Encrypt",
-               "kms:Decrypt",
-               "kms:ReEncrypt*",
-               "kms:GenerateDataKey*",
-               "kms:DescribeKey"],
-               "Resource" : "arn:aws:kms:us-east-1:514533009312:key/*"
-          }]
-      },
+                            "kms:Decrypt",
+                            "kms:ReEncrypt*",
+                            "kms:GenerateDataKey*",
+                             "kms:DescribeKey"],
+                         "Resource" : "arn:aws:kms:us-east-1:514533009312:key/*"
+              }]
+           },
       "Users" : [{ "Ref" : "KeyUser" }]
-	}
+       }
   },
   
   
