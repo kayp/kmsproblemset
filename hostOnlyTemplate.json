@@ -1,7 +1,7 @@
 {
   "AWSTemplateFormatVersion" : "2010-09-09",
   
-  "Description" : "AWS cloud formation template for enabling encryption/decryption of KMS keys by account's - AccountA, AccountB AccountC. The keys are created and kept in AccountD ",
+  "Description" : "AWS cloud formation template for enabling encryption/decryption of KMS keys by AccountD for AccountD",
   
   "Parameters" : {      
       "KeyOwner": {
