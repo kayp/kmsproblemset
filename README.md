@@ -2,7 +2,7 @@
 Creating and Deploying KMS Keys in Client Accounts from AWS Admin account 
 
 
-This repo was created in response to a questionnaire on creating AWS-KMS keys in one account and assign appropriate roles/permissions to multiple accounts t use the keys. To make the code modular and compact  nested templates were created. An additional template was also used to make keys for admin account only.
+This repo was created in response to a questionnaire on creating AWS-KMS keys in one account and assign appropriate roles/permissions to multiple accounts to use the keys. To make the code modular and compact  nested templates were created. An additional template was also used to make keys for admin account only.
 
 
 Stack sets were used to grant users permission to used in various accounts appropriate KMS permissions.
